@@ -34,9 +34,8 @@ public class FramesLoader : IEnumerator
 
     private bool LoadDump(int num = 0)
     {
-        Debug.Log($"Loading dump: {num}.json...");
-
         var dumpFileLocation = Path.Combine(_folder, $"{num}.json");
+        Debug.Log($"Loading dump: {dumpFileLocation}...");
         if (File.Exists(Path.Combine(_folder, dumpFileLocation)))
         {
             using (var streamReader = new StreamReader(dumpFileLocation))

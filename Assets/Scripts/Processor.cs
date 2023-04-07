@@ -13,7 +13,7 @@ public class Processor : MonoBehaviour
 
     private static IEnumerator _enumerator;
     private bool _isRunning = true;
-    private float _waitTime = 0.5f;
+    private float _waitTime = 0.1f;
     private float _timer = 0.0f;
     private bool _isWaiting = false;
     private Dictionary<int, GameObject> _playerObjects;
@@ -52,6 +52,20 @@ public class Processor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        var args = System.Environment.GetCommandLineArgs();
+        for (int i = 0; i < args.Length; i++)
+        {
+            if (args[i] == "-projectLocation")
+            {
+                ProjectFolder = args[i + 1];
+                Debug.Log($"Project folder passed: {ProjectFolder}");
+                break;
+            }
+        }
+
+        if (string.IsNullOrEmpty(ProjectFolder))
+            ProjectFolder = "/Users/brasd99/Desktop/Dissertation/outputs/project";
+
         (_pitchWidth, _pitchHeight) = LoadPitch();
         var dumpsFolder = Path.Combine(ProjectFolder, "dumps");
         var framesEnumerator = new FramesEnumerator(dumpsFolder);
@@ -149,7 +163,6 @@ public class Processor : MonoBehaviour
             var currentBallPosition = new Vector3(ballPosition.BallPositionData[0], ballPosition.BallPositionData[1]);
             if (ballPosition.NextBallPosition != null)
             {
-                Debug.Log(ballPosition.NextBallPosition);
                 for (int i = _frameId + 1; i < ballPosition.NextBallPosition.NextFrameId; i++)
                 {
                     var nextBallPosition = new Vector3(ballPosition.NextBallPosition.BallPositionData[0], ballPosition.NextBallPosition.BallPositionData[1]);
