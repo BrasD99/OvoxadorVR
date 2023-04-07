@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{AFBCB0E5-4642-941A-CFB5-91AA50883E3F}</ProjectGuid>
+    <ProjectGuid>{3384FFD1-BA55-EAAA-8033-7CAEDBDD252B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,8 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Processor.cs" />
-    <Compile Include="Assets/Scripts/Common/Contracts.cs" />
     <Compile Include="Assets/Scripts/Common/FramesEnumerator.cs" />
+    <Compile Include="Assets/Scripts/Common/Contracts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
